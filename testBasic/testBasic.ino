@@ -48,7 +48,7 @@ void serialEvent()
   {
     char ch = Serial.read();
     Serial.write(ch);
-    if(ch != ',') { 
+    if(ch != '\n') { 
             strValue[ind++] = ch; 
       } else if(ch == ','){ 
             strValue[ind] = 0; 

@@ -3,15 +3,13 @@
 
 const char* ssid = "KNAM"; //Enter SSID
 const char* password = "password"; //Enter Password
-int itNum = 1;
 char strValue[10];
+int itNum = 1;
 int ind = 0;
 
 void setup(void)
 { 
   Serial.begin(115200);
-  // Connect to WiFi
-  //WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) 
   {
     WiFi.begin(ssid, password); //eventually, you will have to add an identifier, for example, in serial event, check if ch is # and if so, assume it is the ssid
@@ -50,11 +48,11 @@ void serialEvent()
     Serial.write(ch);
     if(ch != ';') { 
             strValue[ind++] = ch; 
-      } else if(ch == ','){ 
-            strValue[ind] = 0; 
-            password = (strValue); 
-      }
-      strValue;
-      ind = 0;
+    } else if(ch == ','){ 
+         strValue[ind] = 0; 
+         password = (strValue); 
+    }
+     strValue;
+     ind = 0;
   }
 }

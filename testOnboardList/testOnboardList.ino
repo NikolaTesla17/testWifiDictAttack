@@ -1,12 +1,12 @@
 #include <ESP8266WiFi.h>        // Include the Wi-Fi library
-#include <FS.h> //for the file system
 //#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
 
-const char* ssid = "KNAM"; //Enter SSID
+const char* ssid = "drive"; //Enter SSID
 char* password = "password"; //Enter Password
 char strValue[10];
 
 char *passwords[] = {
+"arun&emmaly",
 "password",
 "123456",
 "12345678",
@@ -1017,41 +1017,53 @@ char *passwords[] = {
 "michelangelo",
 "telco",
 "alpine",
+"zzzz"
 };
 
-int itNum = 1;
+int itNum = 0;
 int ind = 0;
+int seconds = 0;
 
 void setup(void)
 { 
   Serial.begin(115200);
   while (WiFi.status() != WL_CONNECTED) 
   {
-    WiFi.begin(ssid, password); //eventually, you will have to add an identifier, for example, in serial event, check if ch is # and if so, assume it is the ssid
-
-     for (int i =0; i< 1010; i++)
-     {
-      password = passwords[i];    
-     }
-    
+//    if(itNum != 1)
+//    {
+//    delay(20000);
+//    }
+    password = passwords[itNum]; 
     Serial.print("trying password number ");
-    Serial.print(itNum);
+    Serial.print((itNum+1));
     Serial.print(": ");
     Serial.print(password);
     Serial.print('\n');
-    delay(50);
     itNum++;
+    
+    WiFi.begin(ssid, password); //eventually, you will have to add an identifier, for example, in serial event, check if ch is # and if so, assume it is the ssid
+    delay(18000);
+    seconds += 20;
   }
   Serial.print('\n');
-  Serial.println("WiFi connection Successful");
+  Serial.print("WiFi connection Successful, taking about ");
+  Serial.print(seconds);
+  Serial.print(" seconds");
   Serial.print('\n');
-  Serial.print("The IP Address of ESP8266 Module is: ");
+  Serial.print("The IP Address of this ESP8266 Module is: ");
   Serial.print(WiFi.localIP());// Print the IP address
   Serial.print('\n');
-  Serial.print("The WiFi password for ");
+  Serial.print("The WiFi password for the network ");
   Serial.print(ssid);
   Serial.print(" is ");
-  Serial.print(password);
+  Serial.print(passwords[(itNum-1)]);
+
+  Serial.print('\n');
+  Serial.print('\n');
+  Serial.print('\n');
+  Serial.print("More Information:");
+  Serial.print('\n');
+  WiFi.printDiag(Serial);
 }
 
 

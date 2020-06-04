@@ -1,5 +1,5 @@
 #include <ESP8266WiFi.h>        // Include the Wi-Fi library
-#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
+//#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
 
 const char* ssid = "KNAM"; //Enter SSID
 const char* password = "password"; //Enter Password
@@ -56,6 +56,5 @@ void serialEvent()
       }
       strValue;
       ind = 0;
-    
   }
 }

@@ -1028,6 +1028,11 @@ void setup(void)
   while (WiFi.status() != WL_CONNECTED) 
   {
     WiFi.begin(ssid, password); //eventually, you will have to add an identifier, for example, in serial event, check if ch is # and if so, assume it is the ssid
+
+     for (int i =0; i< 1010; i++)
+     {
+      password = passwords[i];    
+     }
     
     Serial.print("trying password number ");
     Serial.print(itNum);

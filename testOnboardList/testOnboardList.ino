@@ -1,9 +1,15 @@
 #include <ESP8266WiFi.h>        // Include the Wi-Fi library
+#include <FS.h> //for the file system
 //#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
 
 const char* ssid = "KNAM"; //Enter SSID
-const char* password = "password"; //Enter Password
+char* password = "password"; //Enter Password
 char strValue[10];
+
+char *passwords[] = {"This is string 1", "This is string 2", "This is string 3",
+                     "This is string 4", "This is string 5", "This is string 6"
+                    };
+
 int itNum = 1;
 int ind = 0;
 
@@ -38,21 +44,4 @@ void setup(void)
 void loop() 
 {
   // EMPTY
-}
-
-void serialEvent()
-{
-  while(Serial.available())
-  {
-    char ch = Serial.read();
-    Serial.write(ch);
-    if(ch != ';') { 
-            strValue[ind++] = ch; 
-    } else if(ch == ','){ 
-         strValue[ind] = 0; 
-         password = (strValue); 
-    }
-     strValue;
-     ind = 0;
-  }
 }

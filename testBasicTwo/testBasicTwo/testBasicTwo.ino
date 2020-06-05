@@ -52,13 +52,15 @@ void setup() {
   Serial.print(ssid);
   Serial.print(" selected");
   Serial.print('\n');
-  }
-  }
-  }
+  Serial.print('\n');
+  Serial.print('\n');
+  Serial.print('\n');
+  Serial.print('\n');
 
+
+  Serial.println("please enter a password to try");
   while (WiFi.status() != WL_CONNECTED) 
   {
-  Serial.println("please enter a password to try");
     
   static char buffer[MAX_MESSAGE];
   static unsigned char index = 0;
@@ -88,6 +90,9 @@ void setup() {
       delay(16850);
       seconds += 17;
 
+      Serial.println("please enter a password to try");
+      Serial.print('\n')
+
       buffer[0] = 0;
       index = 0;
      } else {       
@@ -102,20 +107,12 @@ void setup() {
     Serial.print(seconds);
     Serial.print(" seconds");
     Serial.print('\n');
-    Serial.print("The IP Address of this ESP8266 Module is: ");
-    Serial.print(WiFi.localIP());// Print the IP address
-    Serial.print('\n');
-    Serial.print("The WiFi password for the network ");
-    Serial.print(ssid);
-    Serial.print(" is ");
-    Serial.print(password);
-
-    Serial.print('\n'); //more information     "more information"
-    Serial.print('\n');
-    Serial.print('\n');
-    Serial.print("More Information:");
+    Serial.print("Information:");
     Serial.print('\n');
     WiFi.printDiag(Serial);
+  }
+  }
+  }
 }
 
 void loop() {

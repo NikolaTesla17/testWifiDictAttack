@@ -3,7 +3,7 @@
 
 #define MAX_MESSAGE 30
 
-const char* ssid = "drive"; //Enter SSID
+const char* ssid = "testNetwork"; //Enter SSID
 const char* password = "password"; //Enter Password
 char strValue[10];
 int itNum = 0;
@@ -33,6 +33,9 @@ while (WiFi.status() != WL_CONNECTED)
       password = buffer;
 
 
+    Serial.print("targeting ");
+    Serial.print(ssid);
+    Serial.print('\n');
     Serial.print("trying password number ");
     Serial.print((itNum+1));
     Serial.print(": ");

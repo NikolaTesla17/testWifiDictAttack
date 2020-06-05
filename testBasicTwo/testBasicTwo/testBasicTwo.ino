@@ -2,23 +2,65 @@
 
 #define MAX_MESSAGE 30
 
-const char* ssid = "KNAM"; //Enter SSID
+static char buff[MAX_MESSAGE];
+const char* ssid = "none"; //Enter SSID
 const char* password = "password"; //Enter Password
-char strValue[10];
+char incoming = 0;
+
+String wifiSel = "noneYet";
+
+bool ssidSelected = "false";
 
 int itNum = 0;
 int ind = 0;
 int seconds = 0;
+int wifiNetwork = 0;
 
 void setup() {
   Serial.begin(115200);
+
+  Serial.print("Scan start ... ");
+  int n = WiFi.scanNetworks();
+  Serial.print(n);
+  Serial.println(" network(s) found");
+  for (int i = 0; i < n; i++)
+  {
+    Serial.print(i);
+    Serial.print(" ");
+    Serial.print(WiFi.SSID(i));
+    Serial.print('\n');
+  }
+  Serial.println();
 
   Serial.print("targeting ");//targeting "ssid"
   Serial.print(ssid);
   Serial.print('\n');
 
+  Serial.println("select number of network to targert");
+
+  while(ssid = "none"){
+  if (Serial.available() > 0) {
+  incoming = Serial.read();
+  if(incoming != '\n')
+  {
+  wifiNetwork = incoming - '0';
+
+  wifiSel = WiFi.SSID(wifiNetwork);
+  (WiFi.SSID(wifiNetwork)).toCharArray(buff, MAX_MESSAGE);
+  ssid = buff;
+  Serial.print("wifiNetwork ");
+  Serial.print(ssid);
+  Serial.print(" selected");
+  Serial.print('\n');
+  ssid = buff;
+  }
+  }
+  }
+
   while (WiFi.status() != WL_CONNECTED) 
   {
+  Serial.println("please enter a password to try");
+    
   static char buffer[MAX_MESSAGE];
   static unsigned char index = 0;
   char currentChar;

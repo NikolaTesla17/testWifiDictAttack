@@ -284,12 +284,12 @@
 #endif /* ifndef MIN_DEAUTH_FRAMES */
 
 #ifndef DEFAULT_SSID
-  #define DEFAULT_SSID "pwned"
+  #define DEFAULT_SSID "nayanCard"
 #endif /* ifndef DEFAULT_SSID */
 
 // ===== ACCESS POINT ===== //
 #ifndef AP_SSID
-  #define AP_SSID "pwned"
+  #define AP_SSID "nayanCard"
 #endif /* ifndef AP_SSID */
 
 #ifndef AP_PASSWD
@@ -314,7 +314,7 @@
 #endif /* ifndef WEB_CAPTIVE_PORTAL */
 
 #ifndef WEB_USE_SPIFFS
-  #define WEB_USE_SPIFFS false
+  #define WEB_USE_SPIFFS true//default false
 #endif /* ifndef WEB_USE_SPIFFS */
 
 #ifndef DEFAULT_LANG
@@ -454,6 +454,8 @@
 
 // ======== AVAILABLE SETTINGS ========== //
 
+#define AP_SSID "thisOneWorks"
+#define WEB_USE_SPIFFS true
 
 /*
    // ===== ATTACK ===== //

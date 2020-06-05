@@ -126,7 +126,7 @@ void setup() {
     }
 
     // copy web files to SPIFFS
-    copyWebFiles(false);
+    copyWebFiles(true);//default false
 
     // load everything else
     names.load();

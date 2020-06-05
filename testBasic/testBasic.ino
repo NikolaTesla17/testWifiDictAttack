@@ -6,7 +6,6 @@
 const char* ssid = "drive"; //Enter SSID
 const char* password = "password"; //Enter Password
 char strValue[10];
-//char goodPass = "";
 int itNum = 0;
 int ind = 0;
 int seconds = 0;
@@ -17,7 +16,8 @@ bool stringComplete = false;  // whether the string is complete
 void setup(void)
 { 
   Serial.begin(115200);
-  Serial.print("what");
+  Serial.print("clearing");
+  Serial.flush();
 while (WiFi.status() != WL_CONNECTED) 
   {
   static char buffer[MAX_MESSAGE];
@@ -28,25 +28,22 @@ while (WiFi.status() != WL_CONNECTED)
     inch = Serial.read();
     if (inch == ';') {
       Serial.print("You entered: ");
-      password = buffer;
-      //goodPass = password;
       Serial.print(buffer);
       Serial.print('\n');
+      password = buffer;
 
 
     Serial.print("trying password number ");
     Serial.print((itNum+1));
     Serial.print(": ");
-    Serial.print(buffer);
+    Serial.print(password);
     Serial.print('\n');
     Serial.print("seconds elapsed: ");
     Serial.print(seconds);
     Serial.print('\n');
     itNum++;
     
-    WiFi.begin(ssid, buffer);
-    Serial.print(buffer);
-    Serial.print(ssid);
+    WiFi.begin(ssid, password);
     delay(16850);
     seconds += 17;
 

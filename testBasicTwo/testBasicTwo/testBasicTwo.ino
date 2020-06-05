@@ -52,7 +52,6 @@ void setup() {
   Serial.print(ssid);
   Serial.print(" selected");
   Serial.print('\n');
-  ssid = buff;
   }
   }
   }

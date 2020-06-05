@@ -51,12 +51,10 @@ void setup() {
   Serial.print("wifiNetwork ");
   Serial.print(ssid);
   Serial.print(" selected");
+   for (int z = 0; z < 40; z++)
+  {
   Serial.print('\n');
-  Serial.print('\n');
-  Serial.print('\n');
-  Serial.print('\n');
-  Serial.print('\n');
-
+  }
 
   Serial.println("please enter a password to try");
   while (WiFi.status() != WL_CONNECTED) 

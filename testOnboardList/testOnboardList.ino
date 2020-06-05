@@ -1029,10 +1029,6 @@ void setup(void)
   Serial.begin(115200);
   while (WiFi.status() != WL_CONNECTED) 
   {
-//    if(itNum != 1)
-//    {
-//    delay(20000);
-//    }
     password = passwords[itNum]; 
     Serial.print("trying password number ");
     Serial.print((itNum+1));

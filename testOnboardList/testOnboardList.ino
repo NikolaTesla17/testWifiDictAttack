@@ -1,13 +1,18 @@
 #include <ESP8266WiFi.h>        // Include the Wi-Fi library
-//#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
+
+#define MAX_MESSAGE 30
+
+static char buff[MAX_MESSAGE];
 
 const char* ssid = "drive"; //Enter SSID
 char* password = "password"; //Enter Password
 char strValue[10];
+char incoming = 0;
 
 char *passwords[] = {
 "password",
 "123456",
+"Ny17Ash23!",
 "12345678",
 "1234",
 "qwerty",
@@ -1023,10 +1028,50 @@ char *passwords[] = {
 int itNum = 0;
 int ind = 0;
 int seconds = 0;
+int wifiNetwork = 0;
+
+bool ssidSelected = "false";
 
 void setup(void)
 { 
   Serial.begin(115200);
+
+  Serial.print("Scan start ... ");
+  int n = WiFi.scanNetworks();
+  Serial.print(n);
+  Serial.println(" network(s) found");
+  for (int i = 0; i < n; i++)
+  {
+    Serial.print(i);
+    Serial.print(" ");
+    Serial.print(WiFi.SSID(i));
+    Serial.print('\n');
+  }
+  Serial.println();
+
+  Serial.print("targeting ");//targeting "ssid"
+  Serial.print(ssid);
+  Serial.print('\n');
+
+  Serial.println("select number of network to targert");
+
+  while(ssid = "none"){
+  if (Serial.available() > 0) {
+  incoming = Serial.read();
+  if(incoming != '\n')
+  {
+  wifiNetwork = incoming - '0';
+
+  (WiFi.SSID(wifiNetwork)).toCharArray(buff, MAX_MESSAGE);
+  ssid = buff;
+  Serial.print("wifiNetwork ");
+  Serial.print(ssid);
+  Serial.print(" selected");
+   for (int z = 0; z < 40; z++)
+  {
+  Serial.print('\n');
+  }
+  
   while (WiFi.status() != WL_CONNECTED) 
   {
     password = passwords[itNum]; 
@@ -1063,6 +1108,9 @@ void setup(void)
   Serial.print("More Information:");
   Serial.print('\n');
   WiFi.printDiag(Serial);
+}
+}
+}
 }
 
 

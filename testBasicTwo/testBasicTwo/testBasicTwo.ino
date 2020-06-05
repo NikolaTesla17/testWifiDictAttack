@@ -91,7 +91,7 @@ void setup() {
       seconds += 17;
 
       Serial.println("please enter a password to try");
-      Serial.print('\n')
+      Serial.print('\n');
 
       buffer[0] = 0;
       index = 0;

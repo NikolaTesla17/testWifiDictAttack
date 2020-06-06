@@ -87,7 +87,7 @@ if(settings.getWebSettings().use_spiffs){
   if(!SPIFFS.exists(String(F("/web/lang/ru.lang.gz"))) || force) progmemToSpiffs(rulang, sizeof(rulang), String(F("/web/lang/ru.lang.gz")));
   if(!SPIFFS.exists(String(F("/web/lang/th.lang.gz"))) || force) progmemToSpiffs(thlang, sizeof(thlang), String(F("/web/lang/th.lang.gz")));
   if(!SPIFFS.exists(String(F("/web/lang/tlh.lang.gz"))) || force) progmemToSpiffs(tlhlang, sizeof(tlhlang), String(F("/web/lang/tlh.lang.gz")));
-    if(!SPIFFS.exists(String(F("/web/LICENSE.gz"))) || force) progmemToSpiffs(LICENSE, sizeof(LICENSE), String(F("/web/LICENSE.gz")));
+  if(!SPIFFS.exists(String(F("/web/LICENSE.gz"))) || force) progmemToSpiffs(LICENSE, sizeof(LICENSE), String(F("/web/LICENSE.gz")));
 }
 #endif
 }

@@ -1,10 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-//#include <DNSServer.h>
-//#include <ESP8266mDNS.h>
 #include <FS.h>
-
-
 
 //SSID and Password to your ESP Access Point
 const char* ssid = "nayanCard";
@@ -13,8 +9,8 @@ const char* password = "12345678";
 
 ESP8266WebServer server(80);
 
-void handleRoot();              // function prototypes for HTTP handlers
-void handleNotFound();
+//void handleRoot();              // function prototypes for HTTP handlers
+//void handleNotFound();
 
 String getContentType(String filename); // convert the file extension to the MIME type
 bool handleFileRead(String path);       // send the right file to the client (if it exists)

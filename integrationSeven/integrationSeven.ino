@@ -15,8 +15,9 @@ extern "C" {
 #include "EEPROMHelper.h"
 
 #include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncWebServer.h>
+#include <ESP8266WebServer.h>
+//#include <ESPAsyncTCP.h>
+//#include <ESPAsyncWebServer.h>
 #include <FS.h>
 
 #include <ArduinoJson.h>
@@ -36,7 +37,7 @@ extern "C" {
 #include "Scan.h"
 #include "Attack.h"
 #include "CLI.h"
-#include "DisplayUI.h"
+//#include "DisplayUI.h"
 #include "A_config.h"
 #include "webfiles.h"
 
@@ -68,109 +69,117 @@ const char* password = "12345678";
 //==============================
 
 void setup() {
-    while(!mySiteCleared)
-    {
-      AsyncWebServer server(80);
+      ESP8266WebServer server(80);
       SPIFFS.begin();
       Serial.begin(115200);
       WiFi.softAP(ssid, password);  //Start HOTspot removing password will disable security
       Serial.println(WiFi.softAPIP());
+    while(!mySiteCleared)
+    {
+//      ESP8266WebServer server(80);
+//      SPIFFS.begin();
+//      Serial.begin(115200);
+//      WiFi.softAP(ssid, password);  //Start HOTspot removing password will disable security
+//      Serial.println(WiFi.softAPIP());
 
-      server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    Serial.println("yay");
-    request->send(SPIFFS, "/index.html", String(), false);
-  });
+//      server.on("/", HTTP_GET, [](WebServerRequest *request){
+//    Serial.println("yay");
+//    request->send(SPIFFS, "/index.html", String(), false);
+//  });
+//
+//  server.on("/main.css", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/main.css", String(), false);
+//  });
+//
+//  server.on("/generic.html", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/generic.html", String(), false);
+//  });
+//
+//  server.on("/index.html", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/index.html", String(), false);
+//  });
+//
+//  server.on("/indexDeauth", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/generic.html", String(), false);
+//  mySiteCleared = !mySiteCleared;
+//  });
+//
+//  server.on("/banner.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/banner.jpg", String(), false);
+//  });
+//
+//  server.on("/indexMyStuff.html", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/indexMyStuff.html", String(), false);
+//  });
+//
+//  server.on("/02.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/02.jpg", String(), false);
+//  });
+//
+//  server.on("/03.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/03.jpg", String(), false);
+//  });
+//
+//  server.on("/05.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/05.jpg", String(), false);
+//  });
+//
+//  server.on("/06.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/06.jpg", String(), false);
+//  });
+//
+//  server.on("/07.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/07.jpg", String(), false);
+//  });
+//
+//  server.on("/09.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/10.jpg", String(), false);
+//  });
+//
+//  server.on("/10.jpg", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/10.jpg", String(), false);
+//  });
+//
+//  server.on("/faviconPinaple.png", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/faviconPinaple.png", String(), false);
+//  });
+//
+//  server.on("/FontAwesome.otf", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/FontAwesome.otf", String(), false);
+//  });
+//
+//  server.on("/fontawesome.min.css", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/fontawesome.min.css", String(), false);
+//  });
+//
+//  server.on("/fontawesomewebfont.woff2", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/fontawesomewebfont.woff2", String(), false);
+//  });
+//
+//  server.on("/js/jquery.min.js", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/js/jquery.min.js", String(), false);
+//  });
+//  server.on("/js/jquery.poptrox.min.js", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/js/jquery.poptrox.min.js", String(), false);
+//  });
+//  server.on("/js/jquery.scrollex.min.js", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/js/jquery.scrollex.min.js", String(), false);
+//  });
+//  server.on("/js/jquery.scrolly.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
+//  request->send(SPIFFS, "/js/jquery.scrolly.min.js", String(), false);
+//  });
+//  server.on("/js/main.js", HTTP_GET, [](WebServerRequest *request){
+//  request->send(SPIFFS, "/js/main.js", String(), false);
+//  });
+//  server.on("/js/skel.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
+//  request->send(SPIFFS, "/js/skel.min.js", String(), false);
+//  });
+//  server.on("/js/util.js", HTTP_GET, [](WebServerRequest *request){
+//    server.send(SPIFFS, "/js/util.js", String(), false);
+//  });
 
-  server.on("/main.css", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/main.css", String(), false);
-  });
-
-  server.on("/generic.html", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/generic.html", String(), false);
-  });
-
-  server.on("/index.html", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/index.html", String(), false);
-  });
-
-  server.on("/indexDeauth", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/generic.html", String(), false);
-  mySiteCleared = !mySiteCleared;
-  });
-
-  server.on("/banner.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/banner.jpg", String(), false);
-  });
-
-  server.on("/indexMyStuff.html", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/indexMyStuff.html", String(), false);
-  });
-
-  server.on("/02.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/02.jpg", String(), false);
-  });
-
-  server.on("/03.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/03.jpg", String(), false);
-  });
-
-  server.on("/05.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/05.jpg", String(), false);
-  });
-
-  server.on("/06.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/06.jpg", String(), false);
-  });
-
-  server.on("/07.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/07.jpg", String(), false);
-  });
-
-  server.on("/09.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/10.jpg", String(), false);
-  });
-
-  server.on("/10.jpg", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/10.jpg", String(), false);
-  });
-
-  server.on("/faviconPinaple.png", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/faviconPinaple.png", String(), false);
-  });
-
-  server.on("/FontAwesome.otf", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/FontAwesome.otf", String(), false);
-  });
-
-  server.on("/fontawesome.min.css", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/fontawesome.min.css", String(), false);
-  });
-
-  server.on("/fontawesomewebfont.woff2", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/fontawesomewebfont.woff2", String(), false);
-  });
-
-  server.on("/js/jquery.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/jquery.min.js", String(), false);
-  });
-  server.on("/js/jquery.poptrox.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/jquery.poptrox.min.js", String(), false);
-  });
-  server.on("/js/jquery.scrollex.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/jquery.scrollex.min.js", String(), false);
-  });
-  server.on("/js/jquery.scrolly.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/jquery.scrolly.min.js", String(), false);
-  });
-  server.on("/js/main.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/main.js", String(), false);
-  });
-  server.on("/js/skel.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/skel.min.js", String(), false);
-  });
-  server.on("/js/util.js", HTTP_GET, [](AsyncWebServerRequest *request){
-  request->send(SPIFFS, "/js/util.js", String(), false);
-  });
+  server.serveStatic("/index.html", SPIFFS, "/index.html");
+  
   server.begin();                  //Start server
   //Serial.println("HTTP server started");
     Serial.println(WiFi.softAPIP());
@@ -184,7 +193,7 @@ void setup() {
     randomSeed(os_random());
 
     // start serial
-    Serial.begin(115200);
+    //Serial.begin(115200);
     Serial.println();
 
     // start SPIFFS
@@ -244,8 +253,8 @@ void setup() {
 
     // start display
     if (settings.getDisplaySettings().enabled) {
-        displayUI.setup();
-        displayUI.mode = displayUI.DISPLAY_MODE::INTRO;
+        //displayUI.setup();
+        //displayUI.mode = displayUI.DISPLAY_MODE::INTRO;
     }
 
     // copy web files to SPIFFS
@@ -293,7 +302,7 @@ void loop() {
     led.update();    // update LED color
     wifiUpdate();    // manage access point
     attack.update(); // run attacks
-    displayUI.update();
+    //displayUI.update();
     cli.update();    // read and run serial input
     scan.update();   // run scan
     ssids.update();  // run random mode, if enabled
@@ -311,7 +320,7 @@ void loop() {
         booted = true;
         EEPROMHelper::resetBootNum(BOOT_COUNTER_ADDR);
 #ifdef HIGHLIGHT_LED
-        displayUI.setupLED();
+        //displayUI.setupLED();
 #endif // ifdef HIGHLIGHT_LED
     }
 }

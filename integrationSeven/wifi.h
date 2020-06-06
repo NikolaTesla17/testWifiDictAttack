@@ -223,8 +223,8 @@ void startAP(String path, String ssid, String password, uint8_t ch, bool hidden,
 
     MDNS.begin(str(W_DEAUTHER).c_str());
 
-    server.on(String(F("/list")).c_str(), HTTP_GET, handleFileList); // list directory
-
+    server.on(String(F("/list")).c_str(), HTTP_GET, handleFileList); // list directory   [](AsyncWebServerRequest *request
+    //server.on(String(F("/list")).c_str(), [](AsyncWebServerRequest *request, handleFileList); // list directory   [](AsyncWebServerRequest *request
 
     // ================================================================
     // post here the output of the webConverter.py
@@ -320,12 +320,12 @@ void startAP(String path, String ssid, String password, uint8_t ch, bool hidden,
     });
 #endif /* ifdef USE_PROGMEM_WEB_FILES */
        // ================================================================
-
-    server.on(String(F("/run")).c_str(), HTTP_GET, [] () {
-        server.send(200, str(W_TXT), str(W_OK).c_str());
-        String input = server.arg("cmd");
-        cli.exec(input);
-    });
+//
+//    servero.n(String(F("/run")).c_str(), HTTP_GET, [] () {
+//        server.send(200, str(W_TXT), str(W_OK).c_str());
+//        String input = server.arg("cmd");
+//        //cli.exec(input);
+//    });
 
     server.on(String(F("/attack.json")).c_str(), HTTP_GET, [] () {
         server.send(200, str(W_JSON), attack.getStatusJSON());

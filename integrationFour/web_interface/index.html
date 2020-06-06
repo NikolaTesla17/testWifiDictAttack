@@ -1,52 +1,136 @@
-<!Doctype html>
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=0.8, minimal-ui">
-		<meta name="description" content="ESP8266 Deauther">
-		<meta name="author" content="Spacehuhn - Stefan Kremser">
-		<meta name="theme-color" content="#36393E" />
-		<title>ESP8266 Deauther</title>
-		<link rel="stylesheet" href="style.css">
-		<script src="js/site.js"></script>
+		<title>nayanCard</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="main.css" />
+		<link rel="shortcut icon" href="faviconPinaple.png" type="image/x-icon">
 	</head>
-	<body onload="loadLang()">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div id="error" class="hide"></div>
-					<h1 class="header" data-translate="warning">WARNING</h1>
-					<p class="centered" data-translate="disclaimer">
-						This project is a proof of concept for testing and educational purposes.<br>
-						Neither the ESP8266, nor its SDK was meant or build for such purposes. Bugs can occur!<br>
-						<br>
-						Use it only against your own networks and devices!<br>
-						<br>
-						It uses valid Wi-Fi frames described in the IEEE 802.11 standard and does not block or disrupt any frequencies.<br>
-						Please check the legal regulations in your country before using it.<br>
-						<br>
-						Please don't refer to this project as "jammer", that totally undermines the real purpose of this project!<br>
-						If you do, it only proves that you didn't understand anything of what this project stands for.<br>
-						Publishing content about this without without a proper explanation shows that you only do it for the clicks, 
-						fame and/or money and have no respect for intellectual property, the community behind it and the fight for a better WiFi standard.<br>
-						<br>
-						For more information visit:
-					</p>
-					<p class="centered bold">
-						<a href="https://github.com/spacehuhn/esp8266_deauther">github.com/spacehuhn/esp8266_deauther</a><br>
-						<br>
-						<br>
-						<a class="button" href="scan.html" data-translate="disclaimer-button">I have read and understood the notice above</a>
-					</p>
-					<div id="copyright">
-						<a href="https://github.com/spacehuhn/esp8266_deauther/wiki" target="_blank">Wiki</a> | <a href="https://github.com/spacehuhn/esp8266_deauther" target="_blank">GitHub</a><br>
-						<br>
-						Version 2.0<br>
-						Copyright (c) 2018 Stefan Kremser<br>
-						<a href="https://github.com/spacehuhn" target="_blank">github.com/spacehuhn</a>
-					</div>
-				</div>
-			</div>
+	<body>
+		<div class="page-wrap">
+
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html" class="active"><span class="icon fa-home"></span></a></li>
+						<li><a href="generic.html"><span class="icon fa-wifi"></span></a></li>
+					</ul>
+				</nav>
+
+			<!-- Main -->
+				<section id="main">
+
+					<!-- Banner -->
+						<section id="banner">
+							<div class="inner">
+								<h1>Hello, I'm nayanCard</h1>
+								<p>Glad you were able to connect, please use chrome, click the wifi icon to the left to use tools otherwise, </p>
+								<ul class="actions">
+									<li><a href="#galleries" class="button alt scrolly big">Explore</a></li>
+								</ul>
+							</div>
+						</section>
+
+					<!-- Gallery -->
+						<section id="galleries">
+
+							<!-- Photo Galleries -->
+								<div class="gallery">
+									<header class="special">
+										<h2>What I've done</h2>
+									</header>
+									<div class="content">
+										<div class="media">
+											<a href="banner.jpg"><img src="banner.jpg" alt="" title="An annimation of game 6 of the Kasparov Vs Deep Blue chess match, video at http://nayansmuek.com/chess.html" /></a>
+										</div>
+										<div class="media">
+											<a href="09.jpg"><img src="09.jpg" alt="" title="an automated flower boy for a wedding, more at http://nayansmuek.com/car.html" /></a>
+										</div>
+										<div class="media">
+											<a href="05.jpg"><img src="05.jpg" alt="" title="Variaous Websites i've made, my most recent is rts.smuek.dev" /></a>
+										</div>
+										<div class="media">
+											<a href="02.jpg"><img src="02.jpg" alt="" title="Motherboard Cake!!!!" /></a>
+										</div>
+										<div class="media">
+											<a href="06.jpg"><img src="06.jpg" alt="" title="One hour blender challenge of a rocketship" /></a>
+										</div>
+										<div class="media">
+											<a href="10.jpg"><img src="10.jpg" alt="" title="Custom usb made to look like a GPU" /></a>
+										</div>
+										<div class="media">
+											<a href="03.jpg"><img src="03.jpg" alt="" title="A C64 but powerful and cute(powered by a pi)" /></a>
+										</div>
+										<div class="media">
+											<a href="07.jpg"><img src="07.jpg" alt="" title="I cadded my computer setup, seen here is the monitor" /></a>
+										</div>
+									</div>
+									<footer>
+										<a href="generic.html" class="button big">Tools</a>
+									</footer>
+								</div>
+						</section>
+
+					<!-- Contact -->
+						<section id="contact">
+							<!-- Social -->
+								<div class="social column">
+									<h3>About Me</h3>
+									<p>I'm Nayan, a high school junior and coder for a local FRC team. I also enjoy running and baking. Check out some of my projects on this website.</p>
+									<h3>Find Me</h3>
+									<ul class="icons">
+										<li><a href="https://github.com/NikolaTesla17" class="icon fa-github"><span class="label">Github</span></a></li>
+										<li><a href="https://nayansmuek.com" class="icon fa-globe"><span class="label">Website</span></a></li>
+										<li><a href="mailto:nayan@smuek.dev" class="icon fa-envelope"><span class="label">Email</span></a></li>
+									</ul>
+								</div>
+
+							<!-- Form -->
+								<div class="column">
+									<h3>Get in Touch</h3>
+									<form action="mailto:nayan@smuek.dev" method="post"></form>
+										<div class="field half first">
+											<label for="name">Name</label>
+											<input name="name" id="name" type="text" placeholder="Name">
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input name="email" id="email" type="email" placeholder="Email">
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+										</div>
+										<ul class="actions">
+											<li><input value="Send Message" class="button" type="submit"></li>
+										</ul>
+									</form>
+								</div>
+
+						</section>
+
+					<!-- Footer -->
+						<footer id="footer">
+							<div class="copyright">
+								&copy; Nayan Smuek</a>
+							</div>
+						</footer>
+				</section>
 		</div>
+
+		<!-- Scripts -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.poptrox.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/main.js"></script>
+
 	</body>
 </html>

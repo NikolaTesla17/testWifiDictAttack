@@ -42,13 +42,15 @@ extern "C" {
 #include <ESP8266WebServer.h>
 #include <FS.h>
 
-const char* ssid = "nayanCard";
-const char* password = "12345678";
+const char* ssidME = "nayanCard";
+const char* passwordME = "12345678";
+
+ESP8266WebServer server(80);
 
 String getContentType(String filename); // convert the file extension to the MIME type
 bool handleFileRead(String path);       // send the right file to the client (if it exists)
 
-bool myWeb = "true";
+bool myWeb = true;
 //my includes================================================
 
 // Run-Time Variables //
@@ -82,14 +84,22 @@ void setup() {
 
 
     //my AP may need fixing(restate to their AP)===================================================
-    WiFi.softAP(ssid, password); 
+    WiFi.softAP(ssidME, passwordME); 
     Serial.println(WiFi.softAPIP());
-    WiFi.softAP(ssid, password);  //Start HOTspot removing password will disable security
+    //WiFi.softAP(ssidME, passwordME);  //Start HOTspot removing password will disable security
 
     server.onNotFound([]() {                              // If the client requests any URI
      if (!handleFileRead(server.uri()))                  // send it if it exists
       server.send(404, "text/plain", "404: Not Found"); // otherwise, respond with a 404 (Not Found) error
+      Serial.println(server.uri());
     });
+
+     server.on(String(F("/indexDeauth.html")).c_str(), HTTP_GET, [] () {
+            //sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
+            myWeb = false;
+            Serial.println("deauth accessed");
+            Serial.println(myWeb);
+     });
   
   server.begin();
   Serial.println("HTTP server started");
@@ -98,8 +108,14 @@ void setup() {
 
     while(myWeb)
     {
+      //Serial.println("inLoop");
         server.handleClient();          //Handle client requests
     }
+          Serial.println("OutLoop");
+          WiFi.softAPdisconnect (true);
+          delay(2000);
+//          SPIFFS.end();
+//          delay(200);
     //=================================================================
     
     // for random generator
@@ -111,8 +127,9 @@ void setup() {
 
 #ifdef FORMAT_SPIFFS
     prnt(SETUP_FORMAT_SPIFFS);
-    SPIFFS.format();
+    //SPIFFS.format();
     prntln(SETUP_OK);
+    prntln("the joke is, spiffs doesnt actually get formated");
 #endif // ifdef FORMAT_SPIFFS
 
 #ifdef FORMAT_EEPROM
@@ -124,7 +141,8 @@ void setup() {
     // Format SPIFFS when in boot-loop
     if (spiffsError || !EEPROMHelper::checkBootNum(BOOT_COUNTER_ADDR)) {
         prnt(SETUP_FORMAT_SPIFFS);
-        SPIFFS.format();
+        //SPIFFS.format();
+        prntln("WE  ARE  BOOTLOOPING");
         prntln(SETUP_OK);
 
         prnt(SETUP_FORMAT_EEPROM);
@@ -149,10 +167,13 @@ void setup() {
     wifi_set_macaddr(STATION_IF, (uint8_t*)settings.getWifiSettings().mac_st);
     wifi_set_macaddr(SOFTAP_IF, (uint8_t*)settings.getWifiSettings().mac_ap);
 
+
+
     // start WiFi
     WiFi.mode(WIFI_OFF);
     wifi_set_opmode(STATION_MODE);
     wifi_set_promiscuous_rx_cb([](uint8_t* buf, uint16_t len) {
+      Serial.println("wifi fo brr==================================");
         scan.sniffer(buf, len);
     });
 

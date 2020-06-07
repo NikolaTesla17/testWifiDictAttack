@@ -56,7 +56,7 @@ const char W_DOT_GZIP[] PROGMEM = ".gz";
 const char W_DOT_JSON[] PROGMEM = ".json";
 
 // Server and other global objects
-ESP8266WebServer server(80);
+//ESP8266WebServer server(80);
 DNSServer dnsServer;
 IPAddress apIP(192, 168, 4, 1);
 IPAddress netMsk(255, 255, 255, 0);
@@ -113,7 +113,7 @@ String getWifiMode() {
 
 String getContentType(String filename) {
     if (server.hasArg("download")) return String(F("application/octet-stream"));
-    else if(filename.endsWith("indexDeauth.html")) myWeb = !myWeb;
+    //else if(filename.endsWith("indexDeauth.html")) myWeb = !myWeb;
     else if (filename.endsWith(str(W_DOT_GZIP))) filename = filename.substring(0, filename.length() - 3);
     else if (filename.endsWith(str(W_DOT_HTM))) return str(W_HTML);
     else if (filename.endsWith(str(W_DOT_HTML))) return str(W_HTML);
@@ -219,6 +219,8 @@ void startAP(String path, String ssid, String password, uint8_t ch, bool hidden,
     WiFi.softAPConfig(apIP, apIP, netMsk);
     WiFi.softAP(ssid.c_str(), password.c_str(), wifi_channel, hidden);
 
+    Serial.println("WIFI AP STARTED==============================");
+
     dnsServer.setErrorReplyCode(DNSReplyCode::NoError);
     dnsServer.start(53, String(ASTERIX), apIP);
 
@@ -231,6 +233,10 @@ void startAP(String path, String ssid, String password, uint8_t ch, bool hidden,
     // post here the output of the webConverter.py
 #ifdef USE_PROGMEM_WEB_FILES
     if (!settings.getWebSettings().use_spiffs) {
+//        server.on(String(F("/indexDeauth.html")).c_str(), HTTP_GET, [] () {
+//            sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
+//            myWeb = !myWeb;
+//        });
         server.on(String(SLASH).c_str(), HTTP_GET, [] () {
             sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
         });

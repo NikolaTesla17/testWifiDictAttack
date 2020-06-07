@@ -310,6 +310,7 @@ void prntln(const uint32_t i) {
 
 /* ===== WiFi ===== */
 void setWifiChannel(uint8_t ch) {
+  Serial.println("Setting wifi channel");
     if ((ch != wifi_channel) && (ch > 0) && (ch < 15)) {
         wifi_channel = ch;
         wifi_set_channel(wifi_channel);

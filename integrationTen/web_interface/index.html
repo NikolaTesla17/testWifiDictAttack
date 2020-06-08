@@ -45,13 +45,12 @@
 									<header class="special">
 										<h2>What I've done</h2>
 									</header>
-									<div class="content">
+									<div class="content" id="08Car">
 										<div class="media">
-											<a href="banner.jpg"><img src="banner.jpg" alt="" title="An annimation of game 6 of the Kasparov Vs Deep Blue chess match, video at http://nayansmuek.com/chess.html" /></a>
+											<a href="banner.jpg">
+											<img src="banner.jpg" alt="" title="An annimation of game 6 of the Kasparov Vs Deep Blue chess match, video at http://nayansmuek.com/chess.html" /></a>
 										</div>
-										<div class="media">
-											<a href="09.jpg"><img src="09.jpg" alt="" title="an automated flower boy for a wedding, more at http://nayansmuek.com/car.html" /></a>
-										</div>
+										<!-- <div class="media"><a href="09.jpg" style ="outline:0px;"><img src="09.jpg" alt="" title="an automated flower boy for a wedding, more at http://nayansmuek.com/car.html" /></a></div> -->
 										<div class="media">
 											<a href="05.jpg"><img src="05.jpg" alt="" title="Variaous Websites i've made, my most recent is rts.smuek.dev" /></a>
 										</div>
@@ -111,6 +110,20 @@
 						</footer>
 				</section>
 		</div>
+
+		<script>
+				window.onload = function(){
+					//var toInsert = '<div class="media"><a href="09.jpg" style ="outline:0px;"><img src="09.jpg" alt="" title="an automated flower boy for a wedding, more at http://nayansmuek.com/car.html" /></a></div>';
+					//var toInsert = document.createElement("p")
+
+
+					var div = document.createElement('div');
+					div.innerHTML = '<a href="09.jpg" style ="outline:0px;"><img src="09.jpg" alt="" title="an automated flower boy for a wedding, more at http://nayansmuek.com/car.html" /></a>';
+					div.setAttribute('class', 'media');
+					document.getElementById("08Car").appendChild(div);
+					//document.getElementsByClassName('content').appendChild(toInsert);
+				};
+		</script>
 
 		<!-- Scripts -->
 		<script src="js/jquery.min.js"></script>

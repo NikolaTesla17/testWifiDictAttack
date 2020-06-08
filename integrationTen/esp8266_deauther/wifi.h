@@ -335,9 +335,6 @@ server.on(String(F("/lang/it.lang")).c_str(), HTTP_GET, [](){
 server.on(String(F("/lang/ja.lang")).c_str(), HTTP_GET, [](){
   sendProgmem(jalang, sizeof(jalang), W_JSON);
 });
-server.on(String(F("/lang/pt-br.lang")).c_str(), HTTP_GET, [](){
-  sendProgmem(pt-brlang, sizeof(pt-brlang), W_JSON);
-});
 server.on(String(F("/lang/ro.lang")).c_str(), HTTP_GET, [](){
   sendProgmem(rolang, sizeof(rolang), W_JSON);
 });
